@@ -14,7 +14,7 @@ class AuthenticatorController extends Controller
             return redirect()->route('admin-dashboard');
         }elseif(Auth::user()->hasRole('artisan'))
         {
-            //return redirect()->route('admin.index');
+            return redirect()->route('artisan-dashboard');
         }else{
             return redirect()->route('user-dashboard');
         }

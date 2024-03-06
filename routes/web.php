@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\IssueController as AdminIssueController;
 use App\Http\Controllers\Admin\ThreadController as AdminThreadController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\AllocateController as AdminAllocateController;
+use App\Http\Controllers\Artisan\DashboardController as ArtisanDashboardController;
+use App\Http\Controllers\Artisan\IssueController as ArtisanIssueController;
+use App\Http\Controllers\Artisan\ThreadController as ArtisanThreadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,6 +63,15 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::post('/admin/users/store', [AdminUserController::class, 'store'])->name('admin-users-store');
 
     Route::post('/admin/allocate', [AdminAllocateController::class, 'store'])->name('admin-allocate');
+});
+
+Route::group(['middleware' => ['auth', 'role:artisan']], function(){
+    Route::get('/artisan/dashboard', [ArtisanDashboardController::class, 'index'])->name('artisan-dashboard');
+
+    Route::get('/artisan/issues', [ArtisanIssueController::class, 'index'])->name('artisan-issues');
+    Route::get('/artisan/issues/{id}', [ArtisanIssueController::class, 'show'])->name('artisan-issues-show');
+
+    Route::post('/artisan/thread/store', [ThreadController::class, 'store'])->name('artisan-thread-store');
 });
 
 require __DIR__.'/auth.php';

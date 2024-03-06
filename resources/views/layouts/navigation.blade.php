@@ -31,6 +31,15 @@
             </li>
         @endif
 
+        @if (Auth::user()->hasRole('artisan'))
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('artisan-issues') }}">
+                    <i class="bi bi-dash-circle"></i>
+                    <span>Faults</span>
+                </a>
+            </li>
+        @endif
+
         <li class="nav-item">
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                 @csrf
