@@ -37,23 +37,25 @@
 
     <section class="section mt-3">
         <div class="row">
+            <x-alert/>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
+                        <h3 class="card-title">Update Faulty Status</h3>
+                        <form class="row" method="POST" action="{{ route('artisan-issues-update', $issue->id) }}">
+                            @csrf
+                            @method('PUT')
                             <div class="col-8">
                                 <label for="form-label">Select Status</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected="">Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select" name="status" aria-label="Default select example" required>
+                                    <option selected disabled>Open this select menu</option>
+                                    <option value="solved">Solved</option>
                                 </select>
                             </div>
                             <div class="col-4 pt-4">
-                                <button class="btn btn-primary">Update Status</button>
+                                <button type="submit" class="btn btn-primary">Update Status</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

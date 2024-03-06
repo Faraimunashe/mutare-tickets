@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\AllocateController as AdminAllocateController;
 use App\Http\Controllers\Artisan\DashboardController as ArtisanDashboardController;
 use App\Http\Controllers\Artisan\IssueController as ArtisanIssueController;
 use App\Http\Controllers\Artisan\ThreadController as ArtisanThreadController;
+use App\Models\User;
+use App\Notifications\TestPusherNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +72,7 @@ Route::group(['middleware' => ['auth', 'role:artisan']], function(){
 
     Route::get('/artisan/issues', [ArtisanIssueController::class, 'index'])->name('artisan-issues');
     Route::get('/artisan/issues/{id}', [ArtisanIssueController::class, 'show'])->name('artisan-issues-show');
+    Route::put('/artisan/issues/{id}/update', [ArtisanIssueController::class, 'update'])->name('artisan-issues-update');
 
     Route::post('/artisan/thread/store', [ThreadController::class, 'store'])->name('artisan-thread-store');
 });

@@ -78,7 +78,18 @@ class IssueController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'status' => ['required','string'],
+        ]);
+        try{
+            $issue = Issue::findOrFail($id);
+            $issue->status = $request->status;
+            $issue->save();
+
+            return redirect()->back()->with('success','Faulty updated successfully');
+        }catch(\Exception $e){
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     /**
