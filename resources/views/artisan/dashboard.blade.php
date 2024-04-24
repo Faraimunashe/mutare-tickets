@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>
-                                            <a href="{{ route('user-issues') }}">{{ \App\Models\Issue::join('allocateds', 'allocateds.issue_id', '=', 'issues.id')->where('allocateds.user_id', Auth::id())->count() }}</a>
+                                            <a href="{{ route('artisan-issues') }}">{{ \App\Models\Issue::join('allocateds', 'allocateds.issue_id', '=', 'issues.id')->where('allocateds.user_id', Auth::id())->count() }}</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>
-                                            <a href="{{ route('user-issues', ['status'=>'pending']) }}">{{ \App\Models\Issue::join('allocateds', 'allocateds.issue_id', '=', 'issues.id')->where('allocateds.user_id', Auth::id())->where('status', 'pending')->count() }}</a>
+                                            <a href="{{ route('artisan-issues', ['status'=>'pending']) }}">{{ \App\Models\Issue::join('allocateds', 'allocateds.issue_id', '=', 'issues.id')->where('allocateds.user_id', Auth::id())->where('status', 'pending')->count() }}</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>
-                                            <a href="{{ route('user-issues', ['status'=>'solved']) }}">{{ \App\Models\Issue::join('allocateds', 'allocateds.issue_id', '=', 'issues.id')->where('allocateds.user_id', Auth::id())->where('status', 'solved')->count() }}</a>
+                                            <a href="{{ route('artisan-issues', ['status'=>'solved']) }}">{{ \App\Models\Issue::join('allocateds', 'allocateds.issue_id', '=', 'issues.id')->where('allocateds.user_id', Auth::id())->where('status', 'solved')->count() }}</a>
                                         </h6>
                                     </div>
                                 </div>

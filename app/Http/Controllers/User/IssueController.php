@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NotificationMail;
 use App\Models\Issue;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class IssueController extends Controller
 {
@@ -59,6 +61,8 @@ class IssueController extends Controller
             $issue->lat = $lat;
             $issue->long = $long;
             $issue->save();
+
+            //Mail::to($artisan->email)->send(new NotificationMail($artisan, $issue, 'You Where Allocated An Issue/Faulty'));
 
             return redirect()->back()->with('success','Faulty/issue was reported successfully');
         }catch(\Exception $e){
